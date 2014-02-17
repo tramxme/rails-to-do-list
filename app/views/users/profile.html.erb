@@ -1,0 +1,13 @@
+ <div class = "container" >
+  <% if user_signed_in? %>
+    <h3>Your profile:</h3>
+    <table class = "table">
+      <tr>
+        <th>Your email: </th>
+        <td><%= current_user.email %></td>
+      </tr>
+    </table>
+  <% else %>
+    <h3>You need to sign in</h3>
+  <% end %>
+</div>

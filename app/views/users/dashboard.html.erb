@@ -1,0 +1,31 @@
+
+  
+  <div class="container">
+    <% if user_signed_in? %>
+      <% if @item_list.empty? %>
+        <h3>You have no item on your list</h3>
+      <% else %>
+       <h3> My to-do list </h3>
+        <table class="table table-hover">
+          <tr>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @item_list.each do |item| %>
+          <tr>  
+            <td><%= item.description %></td>
+            <td><%= item.duedate %></td>
+            <td><%= link_to "Edit", edit_item_path(item.id), method: :get, class: 'btn btn-default' %></td>
+            <td><%= link_to "Remove", item_path(item.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+          </tr>
+          <% end %> 
+        </table>
+      <% end %>
+        
+      <%= button_to "Add new item to your list", new_item_path, method: :get, class: 'btn btn-info' %>
+    <% else %>
+      <h3>You need to sign in</h3>
+    <% end %>   
+  </div> 

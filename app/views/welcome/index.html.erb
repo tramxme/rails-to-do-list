@@ -1,0 +1,23 @@
+<div class = "container">
+<h3>Create your own list here</h3>
+  <%= form_for :item, url: items_path do |item| %>
+  
+    <p>
+      <%= item.text_area :description , placeholder: "Description" %>
+    </p>
+    
+    <p>
+      <%= item.label 'Due Date' %>
+      <%= item.date_select :duedate, :start_year => 2014%>
+    </p>
+    
+    <p>
+      <% if user_signed_in? %>
+        <%= item.submit "Submit", class: "btn btn-primary" %>
+      <% else %>
+        <%= button_to "Submit", new_user_session_path, method: :get, class: "btn btn-primary" %> 
+      <% end %>
+    </p>  
+  <% end %>
+</div>
+
